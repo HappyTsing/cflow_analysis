@@ -1,5 +1,6 @@
 package taintAnalysis;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import soot.*;
@@ -42,6 +43,8 @@ public class InterTaintAnalysis {
                 }
             }
         }
+
+        // soot分析，得到了所有的method
         methodList.sort(Comparator.comparing(SootMethod::toString));
 
         logger.info("Num of methods: {}", methodList.size());
