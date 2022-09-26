@@ -154,7 +154,6 @@ public class Config {
             clsRoot = Config.SPARK_PATH;
             classPaths.addAll(getSootClassPaths(clsRoot + "jars/"));
         }
-
         return classPaths;
     }
 

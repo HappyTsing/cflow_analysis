@@ -60,7 +60,7 @@
     <!-- 系统模块日志级别控制  -->
     <logger name="com.wang" level="info" />
     <!-- Spring日志级别控制  -->
-    <logger name="org.springframework" level="debug" />
+    <logger name="org.springframework" level="info" />
     <!-- Mybatis日志级别控制  -->
     <logger name="java.sql" level="debug" />
 

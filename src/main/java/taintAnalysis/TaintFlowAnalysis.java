@@ -409,6 +409,7 @@ public class TaintFlowAnalysis extends ForwardFlowAnalysis<Unit, Set<Taint>> {
         }
     }
 
+    // 在此处将sink保存
     private void visitSink(Set<Taint> in, Stmt stmt) {
         if (!stmt.containsInvokeExpr()) return;
         InvokeExpr invoke = stmt.getInvokeExpr();

@@ -38,6 +38,8 @@ public class InterTaintAnalysis {
         List<SootMethod> methodList = new ArrayList<>();
         for (SootClass sc : Scene.v().getApplicationClasses()) {
             for (SootMethod sm : sc.getMethods()) {
+                // Returns true if this method is not phantom, abstract or native, i.e.
+                // phantom method：是在the process directory 和 the Soot classpath 都不存在的类，但是被其他类调用，于是soot创建该类，其中的方法就是phantom method
                 if (sm.isConcrete()) {
                     methodList.add(sm);
                 }
@@ -46,10 +48,12 @@ public class InterTaintAnalysis {
 
         // soot分析，得到了所有的method
         methodList.sort(Comparator.comparing(SootMethod::toString));
-
+        logger.info("method 示例: {}", methodList.get(1));
         logger.info("Num of methods: {}", methodList.size());
 
         // Bootstrap
+
+        // 第一次 遍历所有body，以及其内部的所有语句stmt，如果是赋值语句，那么判断它是否是污点源sources，并将其加入sources中。
         int iter = 1;
         logger.info("iter {}", iter);
         List<Body> bodyList = new ArrayList<>();
@@ -65,6 +69,8 @@ public class InterTaintAnalysis {
         }
         iter++;
 
+
+        // 之后经过若干次遍历后，污点分析最终趋于稳定，也就是不在change时，结束污点分析。
         boolean changed = true;
         while (changed) {
             changed = false;

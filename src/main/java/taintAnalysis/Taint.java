@@ -3,10 +3,7 @@ package taintAnalysis;
 import soot.*;
 import soot.jimple.*;
 
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Taint {
 
@@ -225,13 +222,14 @@ public class Taint {
     @Override
     public String toString() {
         if (isEmpty()) return "Empty Taint";
+        int sourceStartLineNumber = stmt.getJavaSourceStartLineNumber();
 
         String str = "";
         if (transferType != TransferType.None) {
             str += "[" + transferType + "] ";
         }
         str += plainValue + (field != null ? "." + field : "") +
-                " in " + stmt + " in method " + method;
+                " in " + stmt + " in method " + method + " source location: " + sourceStartLineNumber;
 
         return str;
     }
@@ -252,5 +250,4 @@ public class Taint {
     public int hashCode() {
         return Objects.hash(plainValue, field, stmt, method, transferType);
     }
-
 }

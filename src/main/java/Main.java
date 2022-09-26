@@ -1,5 +1,7 @@
 import configInterface.ConfigInterface;
 import org.apache.commons.cli.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import taintAnalysis.TaintAnalysisDriver;
 import taintAnalysis.sourceSinkManager.ISourceSinkManager;
 import taintAnalysis.sourceSinkManager.SourceSinkManager;
@@ -13,6 +15,7 @@ import java.io.PrintStream;
 import java.util.*;
 
 public class Main {
+    private final static Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) throws IOException {
         Option optionApp = Option.builder("a")
@@ -83,7 +86,6 @@ public class Main {
                 /* getting option intra */
                 run_intra = true;
             }
-
             run(considered, use_spark, run_intra);
         } catch (ParseException ex) {
             System.out.println(ex.getMessage());
@@ -99,13 +101,17 @@ public class Main {
         for (String[] cfg : considered) {
             srcPaths.addAll(Config.getSourcePaths(cfg));
             classPaths.addAll(Config.getClassPaths(cfg));
-            configInterface = Config.getInterface(cfg);
+            configInterface = Config.getInterface(cfg); // 获取configInterface文件夹下的对象，用于获取source和sink
         }
-
+        logger.info("srcPaths: {}",String.valueOf(srcPaths));
+        logger.info("classPaths: {}",String.valueOf(classPaths));
         // Run taint analysis
         ISourceSinkManager sourceSinkManager = new SourceSinkManager(configInterface);
         ITaintWrapper taintWrapper = TaintWrapper.getDefault();
+
         TaintAnalysisDriver driver = new TaintAnalysisDriver(sourceSinkManager, taintWrapper);
+
+        // 开始调用分析
         if (run_intra) {
             driver.runIntraTaintAnalysis(srcPaths, classPaths);
         } else {
