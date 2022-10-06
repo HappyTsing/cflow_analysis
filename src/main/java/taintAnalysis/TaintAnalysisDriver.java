@@ -82,7 +82,7 @@ public class TaintAnalysisDriver {
         }
         String[] initArgs;
         if (use_spark) {
-            logger.error("use spark inter-...!!!");
+            logger.info("use spark inter-...!!!");
             initArgs = new String[]{
                     // General Options
                     "-w",
@@ -156,7 +156,7 @@ public class TaintAnalysisDriver {
 
         InterAnalysisTransformer transformer = (InterAnalysisTransformer)
                 PackManager.v().getPack("wjtp").get("wjtp.taintanalysis").getTransformer();
-        return transformer;
+        return  transformer;
     }
 
     public ISourceSinkManager getSourceSinkManager() {

@@ -159,7 +159,7 @@ public class InterAnalysisTransformer extends SceneTransformer {
         map.put("lineNumber",_lineNumer);
         map.put("taint",type);
         if(result.containsKey(conf)){
-            logger.info("Existed conf: {}",conf);
+//            logger.info("Existed conf: {}",conf);
             result.get(conf).add(map);
         }else {
             Set<Map<String,String>> set = new HashSet<>();
