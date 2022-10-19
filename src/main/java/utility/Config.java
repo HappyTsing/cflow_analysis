@@ -14,7 +14,7 @@ import java.util.List;
 public class Config {
 
     public static final String TEST_PATH = "Test/out/artifacts/Test_jar/Test.jar";
-    public static final String HADOOP_PATH = "app/hadoop-3.3.0/";
+    public static final String HADOOP_PATH = "app/hadoop-2.8.5/";
     public static final String HBASE_PATH = "app/hbase-2.3.1/";
     public static final String ALLUXIO_PATH = "app/alluxio-1.8.0/";
     public static final String ZOOKEEPER_PATH = "app/apache-zookeeper-3.5.6-bin/";

@@ -28,8 +28,8 @@ def class_to_lines():
 
 
 def get_not_affected_class():
-    PATH_HADOOP_COMMON = "../app/hadoop-3.3.0/share/hadoop/common"
-    JARS = ["hadoop-nfs-3.3.0.jar", "hadoop-common-3.3.0.jar", "hadoop-registry-3.3.0.jar", "hadoop-kms-3.3.0.jar"]
+    PATH_HADOOP_COMMON = "../app/hadoop-2.8.5/share/hadoop/common"
+    JARS = ["hadoop-nfs-2.8.5.jar", "hadoop-common-2.8.5.jar"]
     PATH_JARS = []
     for jar in JARS:
         PATH_JARS.append(os.path.join(PATH_HADOOP_COMMON, jar))
