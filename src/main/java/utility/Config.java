@@ -15,8 +15,8 @@ public class Config {
 
     public static final String TEST_PATH = "Test/out/artifacts/Test_jar/Test.jar";
     public static final String HADOOP_PATH = "app/hadoop-3.3.0/";
-    public static final String HBASE_PATH = "app/hbase-2.3.1/";
-    public static final String ALLUXIO_PATH = "app/alluxio-1.8.0/";
+    public static final String HBASE_PATH = "app/hbase-2.2.2/";
+    public static final String ALLUXIO_PATH = "app/alluxio-2.1.0/";
     public static final String ZOOKEEPER_PATH = "app/apache-zookeeper-3.5.6-bin/";
     public static final String SPARK_PATH = "app/spark-2.4.6-bin-hadoop2.7/";
     public static final String[] SUPPORTED = {"test","hdfs","mapreduce","yarn","hadoop_common","hadoop_tools",

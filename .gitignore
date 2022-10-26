@@ -34,6 +34,8 @@ ccc.iml
 app/hadoop*/
 app/spark*/
 app/hbase*/
+app/alluxio*/
+app/*zookeeper*/
 
 # temp files
 tmp1.txt
@@ -50,3 +52,4 @@ sootOutput/
 *.jar
 .idea
 resource/
+.DS_Store
